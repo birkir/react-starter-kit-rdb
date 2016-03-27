@@ -50,4 +50,3 @@ This is very minimal and simple starter kit but can get you quickly going.
 │   └── /server.js              # Server configuration
 └── package.json                # The list of 3rd party libraries and utilities
 ```
-
