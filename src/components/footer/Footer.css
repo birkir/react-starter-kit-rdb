@@ -1,0 +1,8 @@
+.host {
+  padding: 20px;
+  background: #eee;
+  color: #aaa;
+  font-weight: 300;
+  display: flex;
+  flex-direction: row;
+}

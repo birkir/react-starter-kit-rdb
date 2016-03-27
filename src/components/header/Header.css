@@ -1,0 +1,35 @@
+.host {
+  display: flex;
+  flex-direction: row;
+
+  background-color: #e62e91;
+
+  padding: 20px;
+}
+
+.logo {
+  font-size: 22px;
+
+  color: #fff;
+}
+
+.button {
+  display: block;
+  transition: background-color 0.18s ease-in-out;
+
+  padding: 5px 10px;
+
+  border-radius: 3px;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  text-decoration: none;
+  text-transform: uppercase;
+
+  color: #fff;
+}
+
+.button:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
