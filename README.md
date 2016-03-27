@@ -38,7 +38,7 @@ This is very minimal and simple starter kit but can get you quickly going.
 │   ├── /containers/            # App containers
 │   ├── /routes/                # Route components + isomorphic routes in index.js
 │   ├── /views/                 # Express.js views for index and error pages
-│   ├── /server/                # Express.js views for index and error pages
+│   ├── /server/                # Server only stuff
 │   │   ├──  /config.js         # Processing of env and urls
 │   │   ├──  /routes.js         # Server side routes (you can put server side routes here)
 │   │   └──  /queries.js        # Whitelisted rethinkdb queries
@@ -50,3 +50,8 @@ This is very minimal and simple starter kit but can get you quickly going.
 │   └── /server.js              # Server configuration
 └── package.json                # The list of 3rd party libraries and utilities
 ```
+
+### Thank's
+
+ - **mikemintz** for [react-rethinkdb](https://github.com/mikemintz/react-rethinkdb), [rethinkdb-websocket-server](https://github.com/mikemintz/rethinkdb-websocket-server) and [client](https://github.com/mikemintz/rethinkdb-websocket-client).
+ 
