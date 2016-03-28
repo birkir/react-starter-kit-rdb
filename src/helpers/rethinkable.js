@@ -64,7 +64,7 @@ const getReactId = component => {
  * @return {Component}
  */
 const setServerData = (component, obj) => {
-  if (process.env.CLIENT) {
+  if (_isClient) {
     // Nothing for clients
     return null;
   }

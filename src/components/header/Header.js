@@ -1,6 +1,6 @@
 import { PropTypes } from 'react';
 import { Link } from 'react-router';
-import s from 'Header.css';
+import s from './Header.css';
 
 /**
  * Header component

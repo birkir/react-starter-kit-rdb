@@ -1,28 +1,33 @@
+var url = require('url');
 var path = require('path');
 var webpack = require('webpack');
 var shared = require('./shared');
 
-shared.envs.CLIENT = true;
+const wsUrl = url.parse(process.env.DATABASE_WS || 'http://localhost/db');
+const dbUrl = url.parse(process.env.DATABASE_URL || 'rdb://localhost:28015/test');
 
 var config = {
-  context: path.join(__dirname, '../src'),
   devtool: 'cheap-module-eval-source-map',
   debug: true,
   entry: [
     'babel-polyfill',
     'eventsource-polyfill',
     'webpack-hot-middleware/client',
-    './client'
+    './src/client.js'
   ],
   output: {
-    path: path.join(__dirname, '..', 'build'),
+    path: './build',
     filename: 'client.js',
     publicPath: '/',
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin({ 'process.env': shared.envs }),
+    new webpack.DefinePlugin({
+      _isDev: (process.env.NODE_ENV === 'development'),
+      _isClient: true,
+      _dbName: dbUrl.path.substr(1),
+      _wsPath: wsUrl.path,
+    }),
     shared.plugins.provide,
     shared.plugins.extract,
   ],
@@ -33,10 +38,11 @@ var config = {
 if (process.env.NODE_ENV === 'production') {
   // Strip Hot Module Replacement
   config.entry = config.entry.filter(name => name !== 'webpack-hot-middleware/client');
-  config.plugins = config.plugins.slice(1);
   config.debug = false;
   config.devtool = undefined;
 } else {
+  // Add hot module replacement
+  config.plugins = config.plugins.splice(0, 0, new webpack.HotModuleReplacementPlugin());
   // Find specific loaders
   const loaders = shared.mapLoaders(config.module.loaders);
 

@@ -1,13 +1,15 @@
 import { r } from 'rethinkdb-websocket-server';
 import bodyParser from 'body-parser';
 
+const parseBody = bodyParser.urlencoded({ extended: true });
+
 export default function routes(app) {
   /**
    * Accept server side POST of new turtle
    * Push turtle document into store.
    * Then redirect to home.
    */
-  app.post('/add', bodyParser.urlencoded(), (req, res) => {
+  app.post('/add', parseBody, (req, res) => {
     r.table('turtles')
     .insert({ name: req.body.name })
     .run(req._rdbConn)

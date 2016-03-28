@@ -25,7 +25,7 @@ class TurtleList extends Component {
     return {
       turtles: new QueryRequest({
         query: r.table('turtles'),
-        changes: process.env.CLIENT,
+        changes: _isClient,
         initial: this.serverData.turtles || null,
       }),
     };

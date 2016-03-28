@@ -1,5 +1,5 @@
 import { Route, IndexRoute } from 'react-router';
-import App from '../containers/app';
+import App from '../containers/App';
 import TurtleList from './turtles/TurtleList';
 import TurtleAdd from './turtles/TurtleAdd';
 import TurtleDetail from './turtles/TurtleDetail';

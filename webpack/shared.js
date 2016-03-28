@@ -2,17 +2,8 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var shared = {};
 
-shared.envs = {
-  NODE_ENV:      JSON.stringify(process.env.NODE_ENV      || 'development'),
-  PORT:          JSON.stringify(process.env.PORT          || 3000),
-  HOSTNAME:      JSON.stringify(process.env.HOSTNAME      || 'localhost'),
-  SECRET:        JSON.stringify(process.env.SECRET),
-  DATABASE_URL:  JSON.stringify(process.env.DATABASE_URL  || 'rdb://localhost:28015/test'),
-  DATABASE_WS:   JSON.stringify(process.env.DATABASE_WS   || 'http://localhost:3000/db'),
-};
-
 shared.resolve = {
-  modulesDirectories: ['../node_modules', './components', './'],
+  modulesDirectories: ['web_modules', 'node_modules', './src', './src/components'],
   extensions: ['', '.js', '.json', '.css']
 };
 
@@ -31,24 +22,24 @@ shared.mapLoaders = loaders => {
 shared.loaders = [{
   is: 'js',
   test: /\.js/,
-  loader: 'babel',
+  loader: 'babel-loader',
   query: {
     presets: ['react', 'es2015', 'stage-0'],
     plugins: ['transform-decorators-legacy']
   },
-  exclude: /node_modules|build/
+  exclude: /node_modules/,
 }, {
   is: 'css',
   test: /\.css$/,
   loader: ExtractTextPlugin.extract('style-loader', shared.cssLoader),
-  exclude: /node_modules|build/
+  exclude: /node_modules/,
 }];
 
 shared.plugins = {
 	provide: new webpack.ProvidePlugin({
     React: 'react'
   }),
-  extract: new ExtractTextPlugin('style.css', { allChunks: true })
+  extract: new ExtractTextPlugin('styles.css', { allChunks: true })
 }
 
 module.exports = shared;

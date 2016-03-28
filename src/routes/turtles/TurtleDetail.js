@@ -22,7 +22,6 @@ class TurtleDetail extends Component {
     // Setup
     const { params } = props;
     const query = r.table('turtles').get(params.id);
-    const changes = process.env.CLIENT;
 
     if (!this.serverData) {
       this.serverData = serverData.get(this);
@@ -31,7 +30,7 @@ class TurtleDetail extends Component {
     return {
       turtle: new QueryRequest({
         query,
-        changes,
+        changes: _isClient,
         initial: this.serverData.turtle || null,
       }),
     };

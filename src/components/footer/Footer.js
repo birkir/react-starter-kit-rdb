@@ -1,4 +1,4 @@
-import s from 'Footer.css';
+import s from './Footer.css';
 
 /**
  * Footer component

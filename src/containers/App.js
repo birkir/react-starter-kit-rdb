@@ -15,7 +15,7 @@ class App extends Component {
    */
   getChildContext() {
     return {
-      session: (process.env.CLIENT ? DefaultSession : this.props.params.session),
+      session: (_isClient ? DefaultSession : this.props.params.session),
     };
   }
 

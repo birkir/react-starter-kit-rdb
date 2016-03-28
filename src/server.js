@@ -77,7 +77,7 @@ r.connect({
       port: ws.port,
       path: ws.path,
       secure: (ws.protocol === 'https'),
-      db: process.env.DATABASE_NAME,
+      db: dbName,
     });
 
     // Do a router match
