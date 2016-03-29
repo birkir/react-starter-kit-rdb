@@ -1,8 +1,9 @@
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var isDev = (process.env.NODE_ENV === 'development');
 
-if (process.env.NODE_ENV === 'development') {
+if (isDev) {
   require('dotenv').config({ silent: true });
 }
 
@@ -17,14 +18,14 @@ var config = {
     './src/server.js',
   ],
   output: {
-    path: './build',
+    path: path.resolve('./build'),
     filename: 'server.js',
     libraryTarget: 'commonjs2'
   },
   target: 'node',
   plugins: [
     new webpack.DefinePlugin({
-      _isDev: (process.env.NODE_ENV === 'development'),
+      _isDev: isDev,
       _isClient: false,
     }),
     shared.plugins.provide,

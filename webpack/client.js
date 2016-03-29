@@ -16,7 +16,7 @@ var config = {
     './src/client.js'
   ],
   output: {
-    path: './build',
+    path: path.resolve('./build'),
     filename: 'client.js',
     publicPath: '/',
   },
@@ -25,8 +25,8 @@ var config = {
     new webpack.DefinePlugin({
       _isDev: (process.env.NODE_ENV === 'development'),
       _isClient: true,
-      _dbName: dbUrl.path.substr(1),
-      _wsPath: wsUrl.path,
+      _dbName: JSON.stringify(dbUrl.path.substr(1)),
+      _wsPath: JSON.stringify(wsUrl.path),
     }),
     shared.plugins.provide,
     shared.plugins.extract,
@@ -42,7 +42,7 @@ if (process.env.NODE_ENV === 'production') {
   config.devtool = undefined;
 } else {
   // Add hot module replacement
-  config.plugins = config.plugins.splice(0, 0, new webpack.HotModuleReplacementPlugin());
+  config.plugins.splice(0, 0, new webpack.HotModuleReplacementPlugin());
   // Find specific loaders
   const loaders = shared.mapLoaders(config.module.loaders);
 

@@ -22,7 +22,7 @@ shared.mapLoaders = loaders => {
 shared.loaders = [{
   is: 'js',
   test: /\.js/,
-  loader: 'babel-loader',
+  loader: 'babel',
   query: {
     presets: ['react', 'es2015', 'stage-0'],
     plugins: ['transform-decorators-legacy']
