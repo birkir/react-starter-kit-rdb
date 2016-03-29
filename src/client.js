@@ -7,13 +7,15 @@ import routes from './routes';
 
 // Extract properties from config
 const location = window.location;
+const secure = (location.protocol === 'https:');
+const port = secure ? 443 : 80;
 
 // Connect to rethinkdb
 session.connect({
   host: location.hostname,
-  port: location.port || null,
+  port,
   path: _wsPath,
-  secure: (location.protocol === 'https:'),
+  secure,
   db: _dbName,
 });
 
