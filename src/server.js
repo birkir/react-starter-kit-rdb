@@ -56,6 +56,7 @@ r.connect({
         const template = ejs.compile(data);
         res.status(200).send(template({
           ROOT: '',
+          SERVER_ONLY: (process.env.SERVER_ONLY || false)
         }));
       });
     });
@@ -119,7 +120,10 @@ r.connect({
           const template = require('ejs-compiled!./views/index.ejs');
 
           // Serve compiled HTML
-          res.status(200).send(template({ ROOT }));
+          res.status(200).send(template({
+            ROOT,
+            SERVER_ONLY: (process.env.SERVER_ONLY || false)
+          }));
 
           // Dismiss other waiter
           isSent = true;
