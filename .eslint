@@ -6,5 +6,8 @@
     "react/jsx-quotes": 0,
     "jsx-quotes": [2, "prefer-double"],
     "react/react-in-jsx-scope": 0
+  },
+  "globals": {
+    "_isClient": true
   }
 }
