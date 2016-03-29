@@ -56,7 +56,7 @@ r.connect({
         const template = ejs.compile(data);
         res.status(200).send(template({
           ROOT: '',
-          SERVER_ONLY: (process.env.SERVER_ONLY || false)
+          SERVER_ONLY: (process.env.SERVER_ONLY || false),
         }));
       });
     });
@@ -122,7 +122,7 @@ r.connect({
           // Serve compiled HTML
           res.status(200).send(template({
             ROOT,
-            SERVER_ONLY: (process.env.SERVER_ONLY || false)
+            SERVER_ONLY: (process.env.SERVER_ONLY || false),
           }));
 
           // Dismiss other waiter

@@ -12,7 +12,7 @@ const config = {
   env: process.env.NODE_ENV || 'development',
   host: process.env.HOSTNAME || 'localhost',
   port: PORT,
-  ws: url.parse(process.env.DATABASE_WS || `http://localhost/db`),
+  ws: url.parse(process.env.DATABASE_WS || 'http://localhost/db'),
   db: url.parse(process.env.DATABASE_URL || 'rdb://localhost:28015/test'),
 };
 

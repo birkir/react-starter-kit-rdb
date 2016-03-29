@@ -14,9 +14,9 @@ const port = secure ? 443 : 80;
 session.connect({
   host: location.hostname,
   port,
-  path: _wsPath,
+  path: _wsPath, // eslint-disable-line
   secure,
-  db: _dbName,
+  db: _dbName, // eslint-disable-line
 });
 
 // Inject session to router components
