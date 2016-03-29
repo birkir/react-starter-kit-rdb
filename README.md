@@ -1,7 +1,7 @@
-React Starter Kit - Rethinkdb Isomorphic Edition
-================================================
+React Starter Kit - Rethinkdb Universal Edition
+===============================================
 
-This is a simple starter kit for react application with both server and client side rendering. Server runs all needed rethinkdb queries needed to render the app, outputs them as JSON alogn with rendering the whole app. Client (if JS is available) will then pickup and continue where the server left off.
+This is a simple starter kit for react application with both server and client side rendering. Server runs all needed rethinkdb queries needed to render the app, outputs them as JSON along with rendering the whole app. Client (if JS is available) will then pickup and continue where the server left off.
 
 ### Requirements
  * Rethinkdb 2.2 (for server rendering with client changes)
@@ -36,7 +36,7 @@ This is very minimal and simple starter kit but can get you quickly going.
 ├── /src/                       # The source code of the application
 │   ├── /components/            # React components
 │   ├── /containers/            # App containers
-│   ├── /routes/                # Route components + isomorphic routes in index.js
+│   ├── /routes/                # Route components + universal routes in index.js
 │   ├── /views/                 # Express.js views for index and error pages
 │   ├── /server/                # Server only stuff
 │   │   ├──  /config.js         # Processing of env and urls
